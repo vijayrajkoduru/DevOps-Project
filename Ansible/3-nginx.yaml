@@ -1,5 +1,6 @@
 - name: install and run nginx
   hosts: web
+  connection: local 
   become: yes # -b
   tasks:
   - name: install nginx
