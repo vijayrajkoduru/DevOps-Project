@@ -1,0 +1,14 @@
+- name: varaiable to print
+  hosts: web
+  vars:
+    course: "Devops with ansible"
+    Duration: "3 months"
+    Trainees:
+      - name: "John"
+        age: 25
+      - name: "Jane"
+        age: 30
+  tasks:  
+  - name: Print the variable
+    ansible.builtin.debug:
+      msg: "Course: {{ course }}, Duration: {{ Duration }}, Trainees: {{ Trainees }}"
