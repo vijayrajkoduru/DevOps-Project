@@ -1,22 +1,4 @@
-## 🚀 Step 1: Update System Packages
 
-To make sure your system is up-to-date, run this command:
-
-```bash
-sudo apt update && sudo apt upgrade -y
-
-```markdown
-
-Installing the docker
-
-```bash
-sudo apt install docker.io -y
-
-```markdown# 🐳 Docker Installation Guide on Ubuntu
-
-This guide will walk you through installing Docker on an Ubuntu system step-by-step.
-
----
 
 ## 🛠 Step 1: Update the System
 
@@ -77,3 +59,9 @@ Docker should now be installed and running on your Ubuntu system. You can test i
 ```bash
 docker run hello-world
 ```
+
+installing the nginx
+```bash
+sudo apt-get install nginx
+```
+
