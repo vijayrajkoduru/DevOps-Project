@@ -31,7 +31,7 @@ Creating user:-
 
 			username vijaykumar
 
-useradd -N <user name> ...(-N:- will not create a default group with same name)
+useradd -N <user name> ...(-N will not create a default group with same user name)
 
 			username -N vijaykumar
 
@@ -53,21 +53,21 @@ Checking group
 
 Give passwd to user
 		
-	passwd<user name>
+passwd<user name>
 
-			passwd root
+	passwd root
 
 Add a user to a group
 
-	usermod -g <group-name> <user-name>
+usermod -g <group-name> <user-name>
 		
-		usermod -g Devops vijaykumar
+	usermod -g Devops vijaykumar
 
 Add same user to another group (-a first group -G second group)
 	
-	usermod -aG <group-name> <user-name>
+usermod -aG <group-name> <user-name>
 		
-			usermod -gG Devops2 vijaykumar
+	usermod -gG Devops2 vijaykumar
 		
 List all groups
 	
@@ -77,18 +77,18 @@ Samepecifc group
 
 	getent group <group-name>
 	
-			getent group Devops2
+	getent group Devops2
 		
 Delete the user
 	
 	userdel <user-name>		
 	
-		userdel vijaykumar
+	userdel vijaykumar
 		
 Delete the group
 	
 	groupdel <group-name>
 	
-		groupdel DevOps
+	groupdel DevOps
 	
 		
