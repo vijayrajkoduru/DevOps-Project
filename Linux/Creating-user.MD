@@ -3,7 +3,9 @@
 Login to: amazon console
 
 	username:****
+
 	password:****
+
 	MFA:****
 	
 Creating a ec2 instance
@@ -21,7 +23,7 @@ Creating a ec2 instance
 	Security-group. 
 
 		All traffic.
-		
+
 6.click on create. 
 	
 	
@@ -29,25 +31,25 @@ Now creating user in amazon Linux
 
 Login:-
 
-ssh -i <.pem> ec2-user@<IP>
+ssh -i <.pem> ec2-user@(IP)
 
 passwd:	*****
 
 Creating user:-
 
-useradd <user name>
+useradd (user-name)
 
 	username vijaykumar
 
-useradd -N <user name> ...(-N will not create a default group with same user name)
+useradd -N (user name) ...(-N will not create a default group with same user name)
 
 	username -N vijaykumar
 
-groupadd <group name>
+groupadd (group name)
 
 	groupadd DevOps
 
-id<user-name> check the user is created and what is the group name
+id(user-name) check the user is created and what is the group name
 
 	id vijaykumar
 
@@ -61,19 +63,19 @@ Checking group
 
 Give passwd to user
 		
-passwd<user name>
+passwd(user name)
 
 	passwd root
 
 Add a user to a group
 
-usermod -g <group-name> <user-name>
+usermod -g (group-name) (user-name)
 		
 	usermod -g Devops vijaykumar
 
 Add same user to another group (-a first group -G second group)
 	
-usermod -aG <group-name> <user-name>
+usermod -aG (group-name) (user-name)
 		
 	usermod -gG Devops2 vijaykumar
 		
@@ -83,19 +85,19 @@ List all groups
 
 Samepecifc group
 
-getent group <group-name>
+Syntax:- getent group (group-name)
 	
 	getent group Devops2
 		
 Delete the user
 	
-userdel <user-name>		
+Syntax:- userdel (user-name)	
 	
 	userdel vijaykumar
 		
 Delete the group
 	
-Syntax:- groupdel <group-name>
+groupdel (group-name)
 	
 	groupdel DevOps
 	
