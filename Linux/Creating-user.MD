@@ -26,11 +26,12 @@ Login:-
 
 Creating user:-
 
-	useradd <user name>
+Syntax:-
+		useradd <user name>
 	
-		```
+		```markup
 			username vijaykumar
-		```
+		```markdown
 	useradd -N <user name> ...(-N:- will not create a default group with same name)
 	
 		```
