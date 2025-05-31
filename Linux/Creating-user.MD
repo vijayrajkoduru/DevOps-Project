@@ -1,19 +1,13 @@
-Here's a well-formatted and **Git-friendly Markdown file** (`ec2_user_group_guide.md`) with clean sections, proper icons, and syntax highlighting. You can directly save and commit this to your Git repository.
 
----
-
-### ✅ `ec2_user_group_guide.md`
-
-````markdown
 # 🚀 EC2 Instance Setup & User Management on Amazon Linux
 
 ---
 
 ## 🔐 Login to AWS Console
 
-- **Username**: `your-username`
-- **Password**: `your-password`
-- **MFA Code**: `your-mfa-code`
+- **Username**: `your-username`  
+- **Password**: `your-password`  
+- **MFA Code**: `your-mfa-code`  
 
 ---
 
@@ -32,9 +26,9 @@ Here's a well-formatted and **Git-friendly Markdown file** (`ec2_user_group_guid
 
 ## 💻 Connect to EC2 via SSH
 
-```bash
-ssh -i <your-keypair.pem> ec2-user@<public-ip>
-````
+Syntax:  
+ssh -i <keypair.pem> ec2-user@<public-ip>
+
 
 ---
 
@@ -43,6 +37,9 @@ ssh -i <your-keypair.pem> ec2-user@<public-ip>
 ---
 
 ### 👤 Create a New User
+
+Syntax:
+useradd (username)
 
 ```bash
 useradd vijaykumar
@@ -54,6 +51,9 @@ useradd vijaykumar
 
 ### 👤 Create User Without Default Group
 
+Syntax:
+useradd -N (username)
+
 ```bash
 useradd -N vijaykumar
 ```
@@ -64,6 +64,9 @@ useradd -N vijaykumar
 
 ### 👥 Create a New Group
 
+Syntax:
+groupadd (groupname)
+
 ```bash
 groupadd DevOps
 ```
@@ -71,6 +74,9 @@ groupadd DevOps
 ---
 
 ### 🔍 Check User and Group Info
+
+Syntax:
+id (username)
 
 ```bash
 id vijaykumar
@@ -82,6 +88,9 @@ id vijaykumar
 
 ### 📂 View All Users
 
+Syntax:
+cat /etc/passwd
+
 ```bash
 cat /etc/passwd
 ```
@@ -89,6 +98,9 @@ cat /etc/passwd
 ---
 
 ### 📂 View All Groups
+
+Syntax:
+cat /etc/group
 
 ```bash
 cat /etc/group
@@ -98,6 +110,9 @@ cat /etc/group
 
 ### 🔐 Set Password for User
 
+Syntax:
+passwd (username)
+
 ```bash
 passwd vijaykumar
 ```
@@ -105,6 +120,9 @@ passwd vijaykumar
 ---
 
 ### ➕ Add User to a Primary Group
+
+Syntax:
+usermod -g (groupname) (username)
 
 ```bash
 usermod -g DevOps vijaykumar
@@ -116,6 +134,9 @@ usermod -g DevOps vijaykumar
 
 ### ➕ Add User to a Secondary Group
 
+Syntax:
+usermod -aG (groupname) (username)
+
 ```bash
 usermod -aG DevOps2 vijaykumar
 ```
@@ -126,6 +147,9 @@ usermod -aG DevOps2 vijaykumar
 
 ### 📋 List All Groups
 
+Syntax:
+getent group
+
 ```bash
 getent group
 ```
@@ -133,6 +157,9 @@ getent group
 ---
 
 ### 📋 View Specific Group
+
+Syntax:
+getent group (groupname)
 
 ```bash
 getent group DevOps2
@@ -142,6 +169,9 @@ getent group DevOps2
 
 ### ❌ Delete a User
 
+Syntax:
+userdel (username)
+
 ```bash
 userdel vijaykumar
 ```
@@ -150,53 +180,9 @@ userdel vijaykumar
 
 ### ❌ Delete a Group
 
+Syntax:
+groupdel (groupname)
+
 ```bash
 groupdel DevOps
 ```
-
----
-
-## 📌 Notes
-
-> ⚠️ Always restrict **security groups** properly in production.
->
-> 🛡️ Do not allow `All traffic` unless testing.
-
----
-
-## 📁 Recommended Git Commit
-
-```bash
-git add ec2_user_group_guide.md
-git commit -m "Add EC2 and Amazon Linux user/group management guide"
-git push origin main
-```
-
----
-
-## 🏁 Done!
-
-````
-
----
-
-### 📦 How to Save and Add This to Git
-
-1. Open your terminal or Git Bash.
-2. Create the file:
-
-```bash
-nano ec2_user_group_guide.md
-# or use any editor like code, vim, etc.
-````
-
-3. Paste the content above and save.
-4. Add and commit:
-
-```bash
-git add ec2_user_group_guide.md
-git commit -m "Add EC2 user and group management notes"
-git push origin main
-```
-
-Let me know if you want this as a **PDF**, **HTML**, or **cheat sheet style** too!
