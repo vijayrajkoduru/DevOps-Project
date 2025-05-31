@@ -1,106 +1,155 @@
-Here’s a detailed description of each command used in your `ec2_user_group_guide.md` file, along with how they **modify or affect the system**:
+Here's the finalized `ec2_user_group_guide.md` file with every command block properly wrapped using \`\`\`\`bash\` code fences. It's clean, GitHub-friendly, and will automatically show **copy buttons** on GitHub.
 
 ---
 
-## 🔍 Commands & Their Effects
+### ✅ Final Copy of `ec2_user_group_guide.md`
 
-### ✅ `useradd vijaykumar`
-
-* **Creates a new user** named `vijaykumar`.
-* Also **creates a default group** with the same name.
-* Adds entries to `/etc/passwd`, `/etc/shadow`, and `/etc/group`.
+````markdown
+# 🚀 EC2 Instance Setup & User Management on Amazon Linux
 
 ---
 
-### ✅ `useradd -N vijaykumar`
+## 🔐 Login to AWS Console
 
-* Same as above, **but skips creating the default group**.
-* User is not assigned to a group with the same name automatically.
-* Allows for **custom group assignments**.
-
----
-
-### ✅ `groupadd DevOps`
-
-* **Creates a new group** named `DevOps`.
-* Adds an entry in `/etc/group`.
+- **Username**: `your-username`  
+- **Password**: `your-password`  
+- **MFA Code**: `your-mfa-code`  
 
 ---
 
-### ✅ `id vijaykumar`
+## 🖥️ Creating an EC2 Instance
 
-* Displays:
-
-  * **UID** (User ID)
-  * **GID** (Primary Group ID)
-  * **Group memberships** for the user
-* Useful for verifying user-group relationships.
-
----
-
-### ✅ `cat /etc/passwd`
-
-* Shows a list of **all system users**.
-* Each line contains user details like username, UID, home directory, and shell.
+1. **Name your instance**
+2. **Choose Amazon Linux AMI**
+3. **Select instance type**: `t3.micro`
+4. **Create a key pair (.pem)**  
+   - Example: `aws-keypair.pem`
+5. **Network Settings → Edit**
+   - **Security Group**: Allow **All traffic** (for learning/demo only)
+6. **Click on "Create"**
 
 ---
 
-### ✅ `cat /etc/group`
+## 💻 Connect to EC2 via SSH
 
-* Displays a list of **all groups** on the system.
-* Shows group names, GIDs, and user memberships.
-
----
-
-### ✅ `passwd vijaykumar`
-
-* Prompts for setting or changing the **password** of the specified user.
-* Updates the `/etc/shadow` file securely.
+```bash
+ssh -i <your-keypair.pem> ec2-user@<public-ip>
+````
 
 ---
 
-### ✅ `usermod -g DevOps vijaykumar`
-
-* **Changes the primary group** of `vijaykumar` to `DevOps`.
-* Only one primary group is allowed per user.
-* Reflects in `/etc/passwd`.
+## 👥 User & Group Management on Amazon Linux
 
 ---
 
-### ✅ `usermod -aG DevOps2 vijaykumar`
+### 👤 Create a New User
 
-* **Appends** the user to the **secondary group** `DevOps2`.
-* Uses `-a` (append) with `-G` (group list).
-* Without `-a`, it would **remove user from other secondary groups**.
+```bash
+useradd vijaykumar
+```
 
----
-
-### ✅ `getent group`
-
-* Retrieves and displays **all group entries** using the `Name Service Switch (NSS)`.
-* Includes both local and network-based groups (e.g., LDAP, if configured).
+> Creates user and default group with the same name.
 
 ---
 
-### ✅ `getent group DevOps2`
+### 👤 Create User Without Default Group
 
-* Filters output to show **only the entry** for the specified group (`DevOps2`).
-* Good for verifying membership and group existence.
+```bash
+useradd -N vijaykumar
+```
 
----
-
-### ✅ `userdel vijaykumar`
-
-* **Deletes the user** from the system.
-* Does **not remove** the user's home directory or files by default.
+> `-N` skips creating a default group named `vijaykumar`.
 
 ---
 
-### ✅ `groupdel DevOps`
+### 👥 Create a New Group
 
-* **Deletes the specified group** from the system.
-* The group must **not be assigned as a primary group** to any user.
+```bash
+groupadd DevOps
+```
 
 ---
 
-If you'd like, I can turn this into a second section in your markdown file or save it as a separate companion document. Let me know!
+### 🔍 Check User and Group Info
+
+```bash
+id vijaykumar
+```
+
+> Shows UID, GID, and group memberships.
+
+---
+
+### 📂 View All Users
+
+```bash
+cat /etc/passwd
+```
+
+---
+
+### 📂 View All Groups
+
+```bash
+cat /etc/group
+```
+
+---
+
+### 🔐 Set Password for User
+
+```bash
+passwd vijaykumar
+```
+
+---
+
+### ➕ Add User to a Primary Group
+
+```bash
+usermod -g DevOps vijaykumar
+```
+
+> Changes the **primary** group of the user.
+
+---
+
+### ➕ Add User to a Secondary Group
+
+```bash
+usermod -aG DevOps2 vijaykumar
+```
+
+> Appends user to **another group** without removing from existing ones.
+
+---
+
+### 📋 List All Groups
+
+```bash
+getent group
+```
+
+---
+
+### 📋 View Specific Group
+
+```bash
+getent group DevOps2
+```
+
+---
+
+### ❌ Delete a User
+
+```bash
+userdel vijaykumar
+```
+
+---
+
+### ❌ Delete a Group
+
+```bash
+groupdel DevOps
+```
