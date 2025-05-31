@@ -1,13 +1,12 @@
 
 
-Login: amazon console
+Login to: amazon console
 
 	username:****
 	password:****
 	MFA:****
 	
 Creating a ec2 instance
-
 	1.Give the name
 	2.Select the Amazon Linux
 	3.Select the t3.micro
@@ -26,37 +25,18 @@ Login:-
 
 Creating user:-
 
-Syntax:-
 		useradd <user name>
-	
-		```markup
 			username vijaykumar
-		```markdown
 	useradd -N <user name> ...(-N:- will not create a default group with same name)
-	
-		```
 			username -N vijaykumar
-		```
 	groupadd <group name>
-	
-		```
 			groupadd DevOps
-		```
 	id<user-name> check the user is created and what is the group name
-		
-		```
 			id vijaykumar
-		```
 Checking user
-
-		```
 			cat /etc/passwd
-		```
 Checking group
-
-		```
 			cat /etc/group
-		```
 Give passwd to user
 		
 	passwd<user name>
