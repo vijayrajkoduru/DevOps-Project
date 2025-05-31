@@ -7,14 +7,22 @@ Login to: amazon console
 	MFA:****
 	
 Creating a ec2 instance
-1.Give the name
-2.Select the Amazon Linux
-3.Select the t3.micro
-4.keypair .pem and give the name'
-5.Netwrok setting (Edit)
-	Security-group 
-		All traffic
-6.click on create 
+
+1.Give the name.
+
+2.Select the Amazon Linux.
+
+3.Select the t3.micro.
+
+4.keypair .pem and give the name.
+
+5.Netwrok setting (Edit).
+
+	Security-group. 
+
+		All traffic.
+		
+6.click on create. 
 	
 	
 Now creating user in amazon Linux
@@ -23,33 +31,33 @@ Login:-
 
 ssh -i <.pem> ec2-user@<IP>
 
-passwd:***
+passwd:	*****
 
 Creating user:-
 
-		useradd <user name>
+useradd <user name>
 
-			username vijaykumar
+	username vijaykumar
 
 useradd -N <user name> ...(-N will not create a default group with same user name)
 
-			username -N vijaykumar
+	username -N vijaykumar
 
-	groupadd <group name>
+groupadd <group name>
 
-			groupadd DevOps
+	groupadd DevOps
 
-	id<user-name> check the user is created and what is the group name
+id<user-name> check the user is created and what is the group name
 
-			id vijaykumar
+	id vijaykumar
 
 Checking user
 
-			cat /etc/passwd
+	cat /etc/passwd
 
 Checking group
 
-			cat /etc/group
+	cat /etc/group
 
 Give passwd to user
 		
@@ -75,19 +83,19 @@ List all groups
 
 Samepecifc group
 
-	getent group <group-name>
+getent group <group-name>
 	
 	getent group Devops2
 		
 Delete the user
 	
-	userdel <user-name>		
+userdel <user-name>		
 	
 	userdel vijaykumar
 		
 Delete the group
 	
-	groupdel <group-name>
+Syntax:- groupdel <group-name>
 	
 	groupdel DevOps
 	
