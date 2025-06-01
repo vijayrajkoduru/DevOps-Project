@@ -1,67 +1,156 @@
 
+````markdown
+# Expense Backend Service Setup
 
-## 🛠 Step 1: Update the System
+This guide provides steps to set up the **Expense Backend Service** written in **Node.js**, configure it as a systemd service, and connect it to a MySQL database.
 
-Make sure your package list and system packages are up-to-date.
+---
+
+## 🔧 Prerequisites
+
+- RHEL/CentOS/Fedora-based system with `dnf`
+- MySQL Server (Remote or Local)
+- Superuser or sudo access
+
+---
+
+## 🚀 Backend Service Installation Steps
+
+### 1. Install Node.js
+
+> By default, Node.js 16 is available. However, this application requires **Node.js version 20 or higher**.
 
 ```bash
-sudo apt update && sudo apt upgrade -y
+# Disable default Node.js module
+dnf module disable nodejs -y
+```
+```bash
+# Enable Node.js 20 module
+dnf module enable nodejs:20 -y
+```
+```bash
+# Install Node.js
+dnf install nodejs -y
+````
+
+---
+
+### 2. Create Application User
+
+Create a system user to run the backend application.
+
+```bash
+useradd expense
+```
+
+> 🔒 Note: The `expense` user is a non-login user used to run the backend service.
+
+---
+
+### 3. Setup Application Directory
+
+```bash
+mkdir /app
+cd /app
 ```
 
 ---
 
-## 🐳 Step 2: Install Docker
-
-Install Docker using the APT package manager.
+### 4. Download and Extract Backend Code
 
 ```bash
-sudo apt install docker.io -y
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+unzip /tmp/backend.zip -d /app
 ```
 
 ---
 
-## ▶️ Step 3: Start and Enable Docker
-
-Start the Docker service and enable it to launch on boot.
+### 5. Install Node.js Dependencies
 
 ```bash
-sudo systemctl start docker
-sudo systemctl enable docker
+cd /app
+npm install
 ```
 
 ---
 
-## 🔍 Step 4: Verify Docker Installation
+## ⚙️ Configure systemd Service
 
-Check if Docker is installed correctly by verifying its version.
+Create a systemd service file for the backend application.
 
 ```bash
-docker --version
+vim /etc/systemd/system/backend.service
+```
+
+Paste the following content:
+
+```ini
+[Unit]
+Description = Backend Service
+
+[Service]
+User=expense
+Environment=DB_HOST="<MYSQL-SERVER-IPADDRESS>"
+ExecStart=/bin/node /app/index.js
+SyslogIdentifier=backend
+
+[Install]
+WantedBy=multi-user.target
+```
+
+> ⚠️ Replace `<MYSQL-SERVER-IPADDRESS>` with the actual IP address of your MySQL server.
+
+---
+
+### 6. Start and Enable the Service
+
+```bash
+systemctl daemon-reload
+systemctl start backend
+systemctl enable backend
 ```
 
 ---
 
-## 👤 Step 5: Run Docker Without Sudo (Optional)
+## 🗄️ Load MySQL Schema
 
-Add your user to the `docker` group to avoid typing `sudo` each time.
+### 1. Install MySQL Client
 
 ```bash
-sudo usermod -aG docker $USER
-newgrp docker
+dnf install mysql -y
+```
+
+### 2. Load Schema into Database
+
+```bash
+mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pExpenseApp@1 < /app/schema/backend.sql
+```
+
+> 📝 Replace `<MYSQL-SERVER-IPADDRESS>` with your actual database IP address.
+
+---
+
+### 3. Restart Backend Service
+
+```bash
+systemctl restart backend
 ```
 
 ---
 
-## ✅ Done!
+## ✅ Verification
 
-Docker should now be installed and running on your Ubuntu system. You can test it by running:
+Check the status of the service:
 
 ```bash
-docker run hello-world
+systemctl status backend
 ```
 
-installing the nginx
+Logs (if any errors):
+
 ```bash
-sudo apt-get install nginx
+journalctl -u backend -f
 ```
+
+---
 
