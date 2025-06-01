@@ -1,7 +1,13 @@
 #!/bin/bash
 
-echo "please enter your name:"
+echo "please enter your USERNAME:"
 
-read NAME
+read USERNAME
 
-echo "Name enterd is:- $NAME"
+echo "USERNAME enterd is:- $NAME"
+
+echo "please enter your PASSWORD:"
+
+read PASSWORD
+
+echo "PASSWORD enterd is:- $PASSWORD"
