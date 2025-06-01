@@ -1,5 +1,5 @@
 
-````markdown
+
 # Expense Backend Service Setup
 
 This guide provides steps to set up the **Expense Backend Service** written in **Node.js**, configure it as a systemd service, and connect it to a MySQL database.
