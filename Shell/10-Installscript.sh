@@ -9,4 +9,13 @@ fi
 
 dnf install mysql-server -y
 
+if [ $? -ne 0 ]; then
+    echo "Failed to install MySQL server"
+    exit 1
+fi
+
 dnf install git -y
+if [ $? -ne 0 ]; then
+    echo "Failed to install Git"
+    exit 1
+fi
