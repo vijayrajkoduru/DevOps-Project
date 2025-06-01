@@ -20,16 +20,16 @@ This guide provides steps to set up the **Expense Backend Service** written in *
 
 > By default, Node.js 16 is available. However, this application requires **Node.js version 20 or higher**.
 
-```bash
 # Disable default Node.js module
+```bash
 dnf module disable nodejs -y
 ```
-```bash
 # Enable Node.js 20 module
+```bash
 dnf module enable nodejs:20 -y
 ```
-```bash
 # Install Node.js
+```bash
 dnf install nodejs -y
 ````
 
