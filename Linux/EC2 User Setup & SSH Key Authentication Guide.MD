@@ -1,6 +1,4 @@
 
-### README.md
-
 
 # Setting Up a New User with SSH Key Authentication on EC2
 
