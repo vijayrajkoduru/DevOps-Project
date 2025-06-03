@@ -3,10 +3,10 @@
   hosts: local
   vars:
     subnet_id: subnet-0ea509ad4cba242d7
-    sg_id: sg-0e978039cdb6c3057
+    sg_id: sg-02d55cffdbadac7a5
     ami_id: ami-09c813fb71547fc4f
     instance_type: t3.micro
-    zone: daws82s.online
+    zone: vrushaba.shop
     instances:
     - mysql
     - backend
