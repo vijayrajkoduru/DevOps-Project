@@ -2,7 +2,7 @@
   connection: local
   hosts: local
   vars:
-    subnet_id: subnet-0ea509ad4cba242d7
+    subnet_id: subnet-087c869062603e510
     sg_id: sg-02d55cffdbadac7a5
     ami_id: ami-09c813fb71547fc4f
     instance_type: t3.micro
