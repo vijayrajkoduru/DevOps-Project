@@ -24,13 +24,13 @@ else
     echo "MySQL is already ... INSTALLED"
 fi
 
-# if [ $? -ne 0 ]
-# then
-#     echo "Installing MySQL ... FAILURE"
-#     exit 1
-# else
-#     echo "Installing MySQL ... SUCCESS"
-# fi
+if [ $? -ne 0 ]
+then
+   echo "Installing MySQL ... FAILURE"
+exit 1
+else
+echo "Installing MySQL ... SUCCESS"
+ fi
 
 dnf list installed git
 
@@ -49,10 +49,10 @@ else
 fi
 
 
-# if [ $? -ne 0 ]
-# then
-#     echo "Installing Git ... FAILURE"
-#     exit 1
-# else
-#     echo "Installing Git ... SUCCESS"
-# fi
+if [ $? -ne 0 ]
+then
+   echo "Installing Git ... FAILURE"
+   exit 1
+else
+   echo "Installing Git ... SUCCESS"
+fi
