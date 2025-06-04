@@ -8,11 +8,11 @@ if [ $USERID -ne 0 ]; then
 fi
 
 # Function to install a package
-install_package() {
+remove_package() {
     PACKAGE=$1
 
     echo "Checking if $PACKAGE is REMOVED..."
-    dnf list remove $PACKAGE # &>/dev/null or can give log
+    dnf list removed $PACKAGE # &>/dev/null or can give log
  
     if [ $? -ne 0 ]; then
         echo "$PACKAGE is  installed. REMOVING..."
