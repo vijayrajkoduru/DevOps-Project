@@ -10,7 +10,7 @@ N="\e[0m"   # Reset
 
 
 if [ $USERID -ne 0 ]; then
-    echo "${R}ERROR:: You must have sudo access to execute this script${N}"
+    echo -e "${R}ERROR:: You must have sudo access to execute this script${N}"
     exit 1
 fi
 
@@ -22,18 +22,18 @@ remove_package() {
     dnf list installed "$PACKAGE" # &>/dev/null
 
     if [ $? -eq 0 ]; then  # Package found
-        echo "$PACKAGE is installed. Removing..."
+        echo -e "$PACKAGE is installed. Removing..."
         dnf remove -y "$PACKAGE" # &>/dev/null
 
         if [ $? -ne 0 ]; then
-            echo "${Y}Removing $PACKAGE ... FAILURE${N}"
+            echo -e "${Y}Removing $PACKAGE ... FAILURE${N}"
 
             exit 1
         else
-            echo "${Y}Removing $PACKAGE ... SUCCESS${N}"
+            echo -e "${Y}Removing $PACKAGE ... SUCCESS${N}"
         fi
     else
-        echo "${R}$PACKAGE is already ... REMOVED${N}"
+        echo -e "${R}$PACKAGE is already ... REMOVED${N}"
     fi
 }
 
