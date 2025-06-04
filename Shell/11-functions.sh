@@ -12,11 +12,11 @@ install_package() {
     PACKAGE=$1
 
     echo "Checking if $PACKAGE is installed..."
-    dnf list installed $PACKAGE
-
+    dnf list installed $PACKAGE # &>/dev/null or can give log
+ 
     if [ $? -ne 0 ]; then
         echo "$PACKAGE is not installed. Installing..."
-        dnf install -y $PACKAGE
+        dnf install -y $PACKAGE # &>/dev/null or can give log
 
         if [ $? -ne 0 ]; then
             echo "Installing $PACKAGE ... FAILURE"
