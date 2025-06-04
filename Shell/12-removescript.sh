@@ -2,8 +2,15 @@
 
 # Check for root access
 USERID=$(id -u)
+# Color codes
+R="\e[31m"  # Red
+G="\e[32m"  # Green
+Y="\e[33m"  # Yellow
+N="\e[0m"   # Reset
+
+
 if [ $USERID -ne 0 ]; then
-    echo "ERROR:: You must have sudo access to execute this script"
+    echo "${R}ERROR:: You must have sudo access to execute this script${N}"
     exit 1
 fi
 
@@ -19,13 +26,14 @@ remove_package() {
         dnf remove -y "$PACKAGE" # &>/dev/null
 
         if [ $? -ne 0 ]; then
-            echo "Removing $PACKAGE ... FAILURE"
+            echo "${Y}Removing $PACKAGE ... FAILURE${N}"
+
             exit 1
         else
-            echo "Removing $PACKAGE ... SUCCESS"
+            echo "${Y}Removing $PACKAGE ... SUCCESS${N}"
         fi
     else
-        echo "$PACKAGE is already ... REMOVED"
+        echo "${R}$PACKAGE is already ... REMOVED${N}"
     fi
 }
 
