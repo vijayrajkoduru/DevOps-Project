@@ -46,7 +46,7 @@ install_package() {
     fi
 }
 
-        echo "check the log path :- /var/log/shellscript-logs"
+        echo -e "${R}check the log path :- /var/log/shellscript-logs${N}"
 
 #[4] Call the function with required packages (log redirection happens inside)
 install_package mysql
