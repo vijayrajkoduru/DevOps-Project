@@ -7,16 +7,16 @@ if [ $USERID -ne 0 ]; then
     exit 1
 fi
 
-# Function to install a package
+# Function to remove a package if installed
 remove_package() {
     PACKAGE=$1
 
-    echo "Checking if $PACKAGE is REMOVED..."
-    dnf list removed $PACKAGE # &>/dev/null or can give log
- 
-    if [ $? -ne 0 ]; then
-        echo "$PACKAGE is  installed. REMOVING..."
-        dnf remove -y $PACKAGE # &>/dev/null or can give log
+    echo "Checking if $PACKAGE is installed..."
+    dnf list installed "$PACKAGE" &>/dev/null
+
+    if [ $? -eq 0 ]; then  # Package found
+        echo "$PACKAGE is installed. Removing..."
+        dnf remove -y "$PACKAGE" &>/dev/null
 
         if [ $? -ne 0 ]; then
             echo "Removing $PACKAGE ... FAILURE"
@@ -29,6 +29,6 @@ remove_package() {
     fi
 }
 
-# Call the function with required packages
+# Call the function with packages to remove
 remove_package mysql
 remove_package git
