@@ -18,22 +18,22 @@ fi
 remove_package() {
     PACKAGE=$1
 
-    echo "Checking if $PACKAGE is installed..."
+    echo -e "${Y}Checking if $PACKAGE is installed...${N}"
     dnf list installed "$PACKAGE" # &>/dev/null
 
     if [ $? -eq 0 ]; then  # Package found
-        echo -e "$PACKAGE is installed. Removing..."
+        echo -e "${Y}$PACKAGE is installed. Removing...${N}"
         dnf remove -y "$PACKAGE" # &>/dev/null
 
         if [ $? -ne 0 ]; then
-            echo -e "${Y}Removing $PACKAGE ... FAILURE${N}"
+            echo -e "${R}Removing $PACKAGE ... FAILURE${N}"
 
             exit 1
         else
-            echo -e "${Y}Removing $PACKAGE ... SUCCESS${N}"
+            echo -e "${G}Removing $PACKAGE ... SUCCESS${N}"
         fi
     else
-        echo -e "${R}$PACKAGE is already ... REMOVED${N}"
+        echo -e "${G}$PACKAGE is already ... REMOVED${N}"
     fi
 }
 
