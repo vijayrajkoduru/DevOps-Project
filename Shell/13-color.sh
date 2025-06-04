@@ -1,37 +1,38 @@
 #!/bin/bash
 
 USERID=$(id -u)
-R="\e[31m"
-G="\e[32m"
-Y="\e[33m"
 
+# Color codes
+R="\e[31m"  # Red
+G="\e[32m"  # Green
+Y="\e[33m"  # Yellow
+N="\e[0m"   # Reset
 
 # Check for root access
-USERID=$(id -u) # Get the user ID of the current user
 if [ $USERID -ne 0 ]; then
-    echo "ERROR:: You must have sudo access to execute this script"
+    echo -e "${R}ERROR:: You must have sudo access to execute this script${N}"
     exit 1
 fi
 
 # Function to install a package
-install_package() { # This function installs a package if it is not already installed
-    PACKAGE=$1 # Get the package name from the argument
+install_package() {
+    PACKAGE=$1
 
-    echo "Checking if $PACKAGE is $G installed..."
-    dnf list installed $PACKAGE # &>/dev/null or can give log
- 
+    echo -e "${Y}Checking if $PACKAGE is installed...${N}"
+    dnf list installed "$PACKAGE" &>/dev/null
+
     if [ $? -ne 0 ]; then
-        echo "$PACKAGE is not installed. $Y Installing..."
-        dnf install -y $PACKAGE # &>/dev/null or can give log
+        echo -e "${Y}$PACKAGE is not installed. Installing...${N}"
+        dnf install -y "$PACKAGE" &>/dev/null
 
         if [ $? -ne 0 ]; then
-            echo "Installing $PACKAGE ... FAILURE"
-            exit 1 # Exit with an error code if installation fails
+            echo -e "${R}Installing $PACKAGE ... FAILURE${N}"
+            exit 1
         else
-            echo "Installing $PACKAGE ... $R SUCCESS"
+            echo -e "${G}Installing $PACKAGE ... SUCCESS${N}"
         fi
     else
-        echo "$PACKAGE is already ... INSTALLED"
+        echo -e "${G}$PACKAGE is already ... INSTALLED${N}"
     fi
 }
 
