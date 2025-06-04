@@ -20,11 +20,11 @@ remove_package() {
     PACKAGE=$1
 
     echo -e "${Y}Checking if $PACKAGE is installed...${N}"
-    dnf list installed "$PACKAGE" &>/dev/null
+    dnf list installed "$PACKAGE" # &>/dev/null
 
     if [ $? -eq 0 ]; then  # Package is installed
         echo -e "${Y}$PACKAGE is installed. Removing...${N}"
-        dnf remove -y "$PACKAGE" &>/dev/null
+        dnf remove -y "$PACKAGE" # &>/dev/null
 
         if [ $? -ne 0 ]; then
             echo -e "${R}Removing $PACKAGE ... FAILURE${N}"
