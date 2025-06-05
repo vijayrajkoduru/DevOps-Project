@@ -8,5 +8,5 @@ TIMESTAM=$(date)  #
 echo "script executed at: $TIMESTAM" 
 sum=$(($NUMBER1 + $NUMBER2))
 
-echo "Total = $NUMBER1+$NUMBER2 = $sum"
+echo "Total = $NUMBER1 + $NUMBER2 = $sum"
 
