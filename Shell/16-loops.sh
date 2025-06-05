@@ -9,29 +9,29 @@ N="\e[0m"
 
 LOG-FOLDER="/home/ec2-user/shell-scripts.log"
 LOG-FILE=$(echo $0 | cut -d "." -f1)
-TIMESTAM=$(date +"%Y-%m-%d %H:%M:%S")
-LOG-FILE_NAME=$LOG-FOLDER/$LOG-FILE.log-$TIMESTAM.lo
-VALIDATE(){
+TIMESTAM=$(date +%Y-%m-%d %H:%M:%S)
+LOG-FILE_NAME="$LOG-FOLDER/$LOG-FILE.log-$TIMESTAM.log"
 
+VALIDATE(){
     if[$1 -ne 0]
     then 
-
         echo -e "$2.. ${R}FAILED${N}"
         exit 1
     else
         echo -e "$2.. ${G}SUCCESS${N}"
     fi
 }
-mkdir -p "/home/ec2-user/shell-scripts.log"
 
 ROOT(){
-    
     if [ $USER-ID -ne 0 ]
     then
         echo -e "${R}You must be root to run this script${N}"
         exit 1
     fi  
 }
+
+echo "script executed at: $TIMESTAM" >> $LOG-FILE_NAME
+
 
 ROOT
 
