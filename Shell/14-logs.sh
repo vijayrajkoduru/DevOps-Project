@@ -48,6 +48,7 @@ install_package() {
 
         echo -e "check the log path:- ${R}$PWD${N}"
         echo "script name: $0"
+        echo "which user is running the script: $USER"
 
 #[4] Call the function with required packages (log redirection happens inside)
 install_package mysql
