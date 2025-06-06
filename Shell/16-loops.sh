@@ -13,7 +13,7 @@ TIMESTAM=$(date +%Y-%m-%d %H:%M:%S)
 LOG-FILE_NAME="$LOG-FOLDER/$LOG-FILE.log-$TIMESTAM.log"
 
 VALIDATE(){
-    if[$1 -ne 0]
+    if [$1 -ne 0]
     then 
         echo -e "$2.. ${R}FAILED${N}"
         exit 1
@@ -40,10 +40,8 @@ do
     dnf install $package -y &>> $LOG-FILE_NAME
     if [$? -ne 0]
     then
-        dnf
-    else
-        echo -e "${G}Successfully installed $package${N}"
-        VALIDATE $? "Installation of $package"
+        dnf install $package -y &>> $LOG-FILE_NAME
+        VALIDATE $? "Installing $package"
     else
         echo -e "$package is already $Y installed${N}"
    fi
