@@ -1,6 +1,3 @@
-Here’s a professional and ready-to-showcase **Git Issue Debug Document** you can use in Markdown (`.md`) format — suitable for GitHub Wiki, internal knowledge bases like Confluence, or DevOps runbooks.
-
----
 
 ## 📄 Git Pull Successful But File Not Visible on EC2 – Root Cause & Resolution
 
@@ -112,9 +109,3 @@ To avoid such issues in the future:
 * Clear Git workflows and state awareness are essential when managing code across distributed environments like EC2.
 
 ---
-
-Let me know if you want:
-
-* This exported as `.md` or `.pdf`
-* A version in Confluence/HTML format
-* Your org’s name or team name added for internal documentation branding.
