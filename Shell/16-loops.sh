@@ -8,12 +8,11 @@ Y="\e[33m"
 N="\e[0m"
 
 LOG-FOLDER="/home/ec2-user/shell-scripts.log"
+mkdir -p $LOG-FOLDER
+
 LOG-FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAM=$(date +%Y-%m-%d %H:%M:%S)
 LOG-FILE_NAME="$LOG-FOLDER/$LOG-FILE.log-$TIMESTAM.log"
-
-mkdir -p $LOG-FOLDER
-
 
 VALIDATE(){
     if [$1 -ne 0]
@@ -34,7 +33,6 @@ ROOT(){
 }
 
 echo "script executed at: $TIMESTAM" >> $LOG-FILE_NAME
-
 
 ROOT
 
