@@ -12,6 +12,9 @@ LOG-FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAM=$(date +%Y-%m-%d %H:%M:%S)
 LOG-FILE_NAME="$LOG-FOLDER/$LOG-FILE.log-$TIMESTAM.log"
 
+mkdir -p $LOG-FOLDER
+
+
 VALIDATE(){
     if [$1 -ne 0]
     then 
